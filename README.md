@@ -1,4 +1,4 @@
-# dva
+# dva  [中文查看](./README_zh-CN.md) 
 
 [![NPM version](https://img.shields.io/npm/v/dva.svg?style=flat)](https://npmjs.org/package/dva)
 [![Build Status](https://img.shields.io/travis/dvajs/dva.svg?style=flat)](https://travis-ci.org/dvajs/dva)
@@ -23,11 +23,11 @@
 * [dva-example-nextjs](https://github.com/dvajs/dva/tree/master/packages/dva-example-nextjs): Integrate with next.js
 * [Account System](https://github.com/yvanwangl/AccountSystem.git): Small inventory management system
 
-## New Features
+## New Features 
 * **Full support for all rxjs functions**
 * **The epics type is added to the model to store rxjs data**
 * add fetch Model
-* [rxjs demo](https://github.com/fangkyi03/dva/tree/master/packages/dva-example) 简单rxjs-demo演示
+* [rxjs demo](https://github.com/fangkyi03/dva/tree/master/packages/dva-example) Simple rxjs-demo demonstration
 
 fetch Model Usage method
 Compatible with existing DVA can be used directly for migration
