@@ -23,7 +23,79 @@
 * [dva-example-nextjs](https://github.com/dvajs/dva/tree/master/packages/dva-example-nextjs): Integrate with next.js
 * [Account System](https://github.com/yvanwangl/AccountSystem.git): Small inventory management system
 
-## Quick Start
+## New Features
+* **Full support for all rxjs functions**
+* **The epics type is added to the model to store rxjs data**
+* add fetch Model
+* [rxjs demo](https://github.com/fangkyi03/dva/tree/master/packages/dva-example) 简单rxjs-demo演示
+
+fetch Model Usage method
+Compatible with existing DVA can be used directly for migration
+```js
+// 1. Initialize
+const app = dva({
+    fetchConfig:{
+            // Here fill out your packaged request file
+            // get post delete...  after that, method will read your exposed name directly.
+            netTool:request,
+            // URL transfer mode
+            // 1.If netApi is empty     url:'/book'
+            // 2.If netApi is not empty The name of the function that needs to be passed out by the netApi url:'book'
+            netApi:netaApi,
+            // Global network start processing
+            // Each person has different processing specifications for network requests. 
+            // Here you can directly write your corresponding processing logic. true is ok false is non conformity goto onNetError function 
+            onGLNetStart:({retData})=>{
+                debugger
+                // Do not do redundant operations besides logical judgment here
+                if (retData.error_code == 0){
+                    return retData.result
+                }else {
+                    return false
+                }
+            },
+            //Global error handling
+            onGLNetError:({retData})=>{
+              // if the data is here, the data will continue to merge, but because the data is wrong,
+              // the wrong network request is not merged into model, nor does it refresh data.
+              // avoid the problem of re refreshing the page due to interface errors.
+              // you can also intercept the onError of a single request in the fetch/sendData of each interface.
+              // the error onError will be recorded in the fetch model. You can directly replay through fetch.isNetError (interface name).
+            },
+            // The above network error is just a mistake that does not conform to the conditions of netStart, and the other is a direct catch thrown out of the more serious.
+            onGLNetCatch:()=>{
+                
+            },
+            // Unified single network end event
+            // Even if the previous network request has entered onNetError, it will continue to perform.
+            // Unless your network request has directly thrown an exception.
+            onGLNetFinall:()=>{
+
+            },
+            // Extended attributes
+            // If you want to send a single data to all events, you can put it here.
+            //Here you will be unified in all fetch functions.
+            extendAttr:()=>({a:'1'}),
+            // Global parameters
+            // Here you can send the corresponding model data globally to make your fetch request cleaner.
+            // For example, you don't need to pass a token and other data when you need get or post each time.
+            GLParams:()=>({}),
+            // Global network request delay processing default 10 seconds
+            GLTimeOut:10000,
+            // Global timeout request
+            // onGLTimeOut
+    }
+});
+```
+view example [https://github.com/fangkyi03/dva/tree/master/packages/dva-example]
+
+## Installl 
+> npm i --save dvajs@${version}
+## Instructions
+* **Compatible DVA projects want to experience all the functions of rxjs in the current project with only the need to add epics nodes in the model file and modify the original DVA to dvajs**
+* **The introduction of this package will bring about a larger volume, perhaps 60K or so.**  
+
+## Quick Start 
 
 [12 steps and 30 minutes to complete user managed CURD application. (react+dva+antd)](https://github.com/sorrycc/blog/issues/18)
 
