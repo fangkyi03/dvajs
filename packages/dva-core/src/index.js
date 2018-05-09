@@ -14,6 +14,9 @@ import {
 } from './subscription';
 import { noop } from './utils';
 
+// 载入model
+import fetchModel, { generalState } from './models/fetch';
+
 // Internal model to update global state when do unmodel
 const dvaModel = {
   namespace: '@@dva',
@@ -38,7 +41,11 @@ export function create(hooksAndOpts = {}, createOpts = {}) {
   plugin.use(filterHooks(hooksAndOpts));
 
   const app = {
-    _models: [prefixNamespace({ ...dvaModel })],
+    _models: [
+      prefixNamespace({ ...dvaModel }),
+      hooksAndOpts.fetchConfig &&
+        prefixNamespace({ ...fetchModel(hooksAndOpts.fetchConfig) }),
+    ],
     _store: null,
     _plugin: plugin,
     use: plugin.use.bind(plugin),
@@ -56,6 +63,7 @@ export function create(hooksAndOpts = {}, createOpts = {}) {
     if (process.env.NODE_ENV !== 'production') {
       checkModel(m, app._models);
     }
+    m.reducers.generalState = generalState;
     const prefixedModel = prefixNamespace({ ...m });
     app._models.push(prefixedModel);
     return prefixedModel;
