@@ -14,7 +14,7 @@ import {
 } from './subscription';
 import { noop } from './utils';
 
-// 载入model
+// 载入模块
 import fetchModel, { generalState } from './models/fetch';
 
 // Internal model to update global state when do unmodel
@@ -41,17 +41,19 @@ export function create(hooksAndOpts = {}, createOpts = {}) {
   plugin.use(filterHooks(hooksAndOpts));
 
   const app = {
-    _models: [
-      prefixNamespace({ ...dvaModel }),
-      hooksAndOpts.fetchConfig &&
-        prefixNamespace({ ...fetchModel(hooksAndOpts.fetchConfig) }),
-    ],
+    _models: [prefixNamespace({ ...dvaModel })],
     _store: null,
     _plugin: plugin,
     use: plugin.use.bind(plugin),
     model,
     start,
   };
+
+  if (hooksAndOpts.fetchConfig) {
+    app._models.push(
+      prefixNamespace({ ...fetchModel(hooksAndOpts.fetchConfig) })
+    );
+  }
   return app;
 
   /**
