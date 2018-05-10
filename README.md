@@ -9,7 +9,6 @@
 
 
 * [Why dva and what's dva](https://github.com/dvajs/dva/issues/1)
-<<<<<<< HEAD
 * [支付宝前端应用架构的发展和选择](https://www.github.com/sorrycc/blog/issues/6)
 
 ## Demos
@@ -213,7 +212,7 @@ To replay the corresponding network request
 view example [https://github.com/fangkyi03/dva/tree/master/packages/dva-example]
 
 ## Installl 
-> npm i --save dvajs@0.0.6
+> npm i --save dvajs@0.1.2
 ## Instructions
 * **Compatible DVA projects want to experience all the functions of rxjs in the current project with only the need to add epics nodes in the model file and modify the original DVA to dvajs**
 * **The introduction of this package will bring about a larger volume, perhaps 60K or so.**  
