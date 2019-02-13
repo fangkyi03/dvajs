@@ -31,7 +31,7 @@
     "is-plain-object": "^2.0.3",
     "redux": "^3.7.1",
     "redux-saga": "^0.16.0",
-    "warning": "^3.0.0"
+    "warning": "^4.0.3"
   },
   "peerDependencies": {
     "redux": "3.x"
