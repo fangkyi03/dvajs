@@ -40,7 +40,7 @@
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "rimraf": "^2.6.2",
-    "rollup": "^0.57.1",
+    "rollup": "^1.19.4",
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-replace": "^2.0.0",
