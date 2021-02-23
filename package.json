@@ -44,7 +44,7 @@
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify": "^3.0.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "shelljs": "^0.8.1",
     "through2": "^2.0.3",
     "uglify-js": "^3.3.18",
